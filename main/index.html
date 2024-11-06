@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>main example</title>
+  </head>
+  <body>
+    <div id="wrapper"></div>
+    <script src="https://unpkg.com/hmpl-js/dist/hmpl.min.js"></script>
+    <script>
+      const template = `
+        <div>
+          {
+            {
+              "src":"http://localhost:8000/api/test",
+              "indicators":[{
+                "trigger": "pending",
+                "content": "<div>Loading...</div>"
+              }]
+            }
+          }
+        </div>`;
+
+      const templateFn = hmpl.compile(template);
+
+      const wrapper = document.getElementById("wrapper");
+
+      const elementObj = templateFn();
+      wrapper.appendChild(elementObj.response);
+    </script>
+  </body>
+</html>
