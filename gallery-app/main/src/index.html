@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery App</title>
+  </head>
+  <body>
+    <!-- <script>
+      const images = [
+        "https://raw.githubusercontent.com/hmpl-language/media/refs/heads/main/logo.png"
+      ];
+
+      const gallery = document.querySelector("#gallery");
+      const modal = document.querySelector("#modal");
+      const modalImg = modal.querySelector("img");
+      const prevButton = document.querySelector("#prev");
+      const nextButton = document.querySelector("#next");
+
+      const itemsPerPage = 5;
+      let currentPage = 1;
+
+      function renderGallery() {
+        gallery.innerHTML = "";
+        const start = (currentPage - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const currentImages = images.slice(start, end);
+
+        currentImages.forEach((src) => {
+          const img = document.createElement("img");
+          img.src = src;
+          gallery.appendChild(img);
+        });
+
+        prevButton.disabled = currentPage === 1;
+        nextButton.disabled =
+          currentPage === Math.ceil(images.length / itemsPerPage);
+      }
+
+      gallery.addEventListener("click", (e) => {
+        if (e.target.tagName === "IMG") {
+          modalImg.src = e.target.src;
+          modal.classList.add("active");
+        }
+      });
+
+      modal.addEventListener("click", () => {
+        modal.classList.remove("active");
+      });
+
+      prevButton.addEventListener("click", () => {
+        if (currentPage > 1) {
+          currentPage--;
+          renderGallery();
+        }
+      });
+
+      nextButton.addEventListener("click", () => {
+        if (currentPage < Math.ceil(images.length / itemsPerPage)) {
+          currentPage++;
+          renderGallery();
+        }
+      });
+
+      renderGallery();
+    </script> -->
+  </body>
+</html>

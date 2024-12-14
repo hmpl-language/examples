@@ -1,0 +1,17 @@
+<div>
+    <div class="gallery" id="gallery">{
+        {
+            src: "http://localhost:8000/api/test",
+            after: "click:.navigation-button"
+        }
+    }</div>
+
+    <div class="pagination">
+    <button class="navigation-button" id="prev" disabled>Previous</button>
+    <button class="navigation-button" id="next">Next</button>
+    </div>
+
+    <div class="modal" id="modal">
+    <img src="https://raw.githubusercontent.com/hmpl-language/media/refs/heads/main/logo.png" alt="" />
+    </div>
+</div>
