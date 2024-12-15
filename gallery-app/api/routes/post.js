@@ -17,8 +17,6 @@ const imagePaths = [
 const imagesController = (req, res) => {
   const { page } = req.body;
 
-  console.log(req.body);
-
   if (!page || isNaN(page)) {
     return res.status(400).send("Page number error");
   }

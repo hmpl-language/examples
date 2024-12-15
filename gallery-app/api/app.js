@@ -18,11 +18,6 @@ app.use("/images", express.static(imagesFolder));
 
 app.use(express.static(path.join(__dirname, "src")));
 
-app.use((req, res, next) => {
-  console.log("Body:", req.body);
-  next();
-});
-
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "src/index.html"));
 });
