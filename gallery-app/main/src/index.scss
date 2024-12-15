@@ -13,24 +13,43 @@ h1 {
   color: #333;
 }
 
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 10px;
-  width: 90%;
-  max-width: 1000px;
+.gallery-initial.active {
+  display: flex;
 }
 
-.gallery img {
-  width: 100%;
-  height: auto;
+.gallery,
+.gallery-initial {
+  display: flex;
+  gap: 20px;
+  width: 90%;
+  max-width: 1000px;
+
+  @media (max-width:1023px) {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   max-width: unset;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.gallery img,
+.gallery-initial img {
+  width: 150px;
+  height: 100px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: transform 0.2s;
 }
 
-.gallery img:hover {
+.gallery img:hover,
+.gallery-initial img:hover {
   transform: scale(1.05);
 }
 
@@ -60,6 +79,8 @@ h1 {
   margin: 20px 0;
   display: flex;
   gap: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
 .pagination button {

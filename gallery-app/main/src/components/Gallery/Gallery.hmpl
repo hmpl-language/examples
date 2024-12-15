@@ -1,17 +1,34 @@
 <div>
-    <div class="gallery" id="gallery">{
-        {
-            src: "http://localhost:8000/api/test",
-            after: "click:.navigation-button"
-        }
-    }</div>
+  <div class="gallery-initial" id="gallery-initial">
+    { 
+      { 
+        src: "http://localhost:8000/api/images", 
+        method: "POST" 
+      } 
+    }
+  </div>
+  <div class="gallery" id="gallery">
+    { 
+      { 
+        src: "http://localhost:8000/api/images", 
+        after:
+        "click:.navigation-button", 
+        method: "POST" 
+      } 
+    }
+  </div>
 
-    <div class="pagination">
-    <button class="navigation-button" id="prev" disabled>Previous</button>
-    <button class="navigation-button" id="next">Next</button>
-    </div>
+  <div class="pagination">
+    <button class="navigation-button" data-page="1" id="previous" disabled>
+      Previous
+    </button>
+    <button class="navigation-button" data-page="2" id="next">Next</button>
+  </div>
 
-    <div class="modal" id="modal">
-    <img src="https://raw.githubusercontent.com/hmpl-language/media/refs/heads/main/logo.png" alt="" />
-    </div>
+  <div class="modal" id="modal">
+    <img
+      src="https://raw.githubusercontent.com/hmpl-language/media/refs/heads/main/logo.png"
+      alt=""
+    />
+  </div>
 </div>

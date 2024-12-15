@@ -14,7 +14,6 @@
   "keywords": [
     "gallery app"
   ],
-  "author": "Anthony Max",
   "bugs": {
     "url": "https://github.com/hmpl-language/examples/issues"
   },
@@ -26,7 +25,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^6.8.1",
-    "hmpl-js": "^2.2.0",
+    "hmpl-js": "^2.2.1",
     "hmpl-loader": "^0.0.5",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.3",
