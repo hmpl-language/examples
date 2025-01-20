@@ -38,6 +38,8 @@ const imagesController = (req, res) => {
         .join("\n")}
   `;
 
+  res.type("text/html");
+
   res.send(htmlResponse);
 };
 
