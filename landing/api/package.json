@@ -1,0 +1,15 @@
+{
+  "name": "hmpl-js_test-server",
+  "version": "1.0.0",
+  "description": "test server",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js & open http://localhost:8000/api/test"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.0"
+  }
+}
