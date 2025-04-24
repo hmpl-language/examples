@@ -1,21 +1,9 @@
 <div>
   <div class="gallery-initial" id="gallery-initial">
-    { 
-      { 
-        src: "http://localhost:8000/api/images", 
-        method: "POST" 
-      } 
-    }
+    {{#request src="http://localhost:8000/api/images" method="POST"}}{{/request}}
   </div>
   <div class="gallery" id="gallery">
-    { 
-      { 
-        src: "http://localhost:8000/api/images", 
-        after:
-        "click:.navigation-button", 
-        method: "POST" 
-      } 
-    }
+    {{#request src="http://localhost:8000/api/images" after="click:.navigation-button" method="POST"}}{{/request}}
   </div>
 
   <div class="pagination">

@@ -1,1 +1,1 @@
-<h1 id="title">{{ src: "http://localhost:8000/api/title" }}</h1>
+<h1 id="title">{{#request src="http://localhost:8000/api/title"}}{{/request}}</h1>

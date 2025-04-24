@@ -36,6 +36,6 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "hmpl-js": "^2.2.3"
+    "hmpl-js": "^3.0.0"
   }
 }
