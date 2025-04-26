@@ -1,0 +1,59 @@
+<div id="header-component">
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">My Logo</h1>
+      <nav class="nav">
+        <a href="#features">Features</a>
+        <a href="#promo">Special Offer</a>
+        <a href="#cta">Get Started</a>
+      </nav>
+    </div>
+  </header>
+  <style>
+    .header {
+      background: #2c3e50;
+      color: white;
+      padding: 20px 0;
+    }
+    .header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+    .nav a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .header .container {
+        flex-direction: column;
+      }
+      .nav {
+        margin-top: 20px;
+      }
+      .nav a {
+        margin: 0 10px;
+      }
+    }
+  </style>
+  <script>
+    document
+      .querySelectorAll('#header-component .nav a[href^="#"]')
+      .forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+  </script>
+</div>

@@ -1,0 +1,137 @@
+<div id="promo-component">
+  <section id="promo" class="section promo">
+    <div class="container">
+      <h2>Limited Time Offer</h2>
+      <p class="promo-text">Get 50% discount if you order in:</p>
+      <div class="countdown">
+        <div class="countdown-item">
+          <span id="days">00</span>
+          <span class="countdown-label">Days</span>
+        </div>
+        <div class="countdown-item">
+          <span id="hours">00</span>
+          <span class="countdown-label">Hours</span>
+        </div>
+        <div class="countdown-item">
+          <span id="minutes">00</span>
+          <span class="countdown-label">Minutes</span>
+        </div>
+        <div class="countdown-item">
+          <span id="seconds">00</span>
+          <span class="countdown-label">Seconds</span>
+        </div>
+      </div>
+      <button class="btn promo-btn">Claim Your Discount</button>
+    </div>
+  </section>
+  <style>
+    .promo {
+      background: #bdbdbd;
+      color: white;
+      padding: 80px 0;
+      text-align: center;
+    }
+    .promo h2 {
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+    .promo-text {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 40px 0;
+    }
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .countdown-item span:first-child {
+      font-size: 48px;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 10px 20px;
+      border-radius: 5px;
+      min-width: 100px;
+      display: inline-block;
+    }
+    .countdown-label {
+      font-size: 14px;
+      margin-top: 5px;
+      text-transform: uppercase;
+    }
+    .promo-btn {
+      background: #2c3e50;
+      font-size: 18px;
+      padding: 15px 40px;
+    }
+    .promo-btn:hover {
+      background: #1a252f;
+    }
+    @media (max-width: 768px) {
+      .countdown {
+        flex-wrap: wrap;
+      }
+      .countdown-item span:first-child {
+        font-size: 36px;
+        min-width: 80px;
+      }
+    }
+  </style>
+  <script>
+    const countDate = new Date();
+    countDate.setDate(countDate.getDate() + 3);
+
+    const countdown = () => {
+      const now = new Date().getTime();
+      const gap = countDate.getTime() - now;
+
+      if (gap <= 0) {
+        document.querySelector(".promo-text").innerText =
+          "The offer has ended!";
+        document.querySelector(".countdown").style.display = "none";
+        const btn = document.querySelector(".promo-btn");
+        btn.disabled = true;
+        btn.innerText = "Time's Up";
+        btn.style.opacity = "0.6";
+        return;
+      }
+
+      const second = 1000;
+      const minute = second * 60;
+      const hour = minute * 60;
+      const day = hour * 24;
+
+      const textDay = Math.floor(gap / day);
+      const textHour = Math.floor((gap % day) / hour);
+      const textMinute = Math.floor((gap % hour) / minute);
+      const textSecond = Math.floor((gap % minute) / second);
+
+      document.getElementById("days").innerText = textDay
+        .toString()
+        .padStart(2, "0");
+      document.getElementById("hours").innerText = textHour
+        .toString()
+        .padStart(2, "0");
+      document.getElementById("minutes").innerText = textMinute
+        .toString()
+        .padStart(2, "0");
+      document.getElementById("seconds").innerText = textSecond
+        .toString()
+        .padStart(2, "0");
+    };
+
+    setInterval(countdown, 1000);
+    countdown();
+
+    document
+      .querySelector("#promo-component .promo-btn")
+      .addEventListener("click", function () {
+        alert("Special offer claimed! Redirecting to checkout...");
+      });
+  </script>
+</div>
