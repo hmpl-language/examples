@@ -1,0 +1,22 @@
+<div id="footer-component">
+  <footer class="footer">
+    <div class="container">
+      <p>
+        &copy; <span id="current-year">1970</span> My Company. All rights
+        reserved.
+      </p>
+    </div>
+  </footer>
+  <style>
+    .footer {
+      background: #2c3e50;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+  </style>
+  <script>
+    document.getElementById("current-year").textContent =
+      new Date().getFullYear();
+  </script>
+</div>
