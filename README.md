@@ -16,3 +16,10 @@ A landing page where the components are completely located on the server, so the
 
 ![Photo 4](https://github.com/user-attachments/assets/9c9edeb5-4a23-4a56-9100-2803151e9a3f)
 ![Photo 5](https://github.com/user-attachments/assets/63c89eeb-5b07-4b3d-979b-77cff7b271d0)
+
+## Game
+
+With the help of a template language, you can even make a game :)
+
+<img width="480" height="321" alt="491296768-a5bb010e-7e11-4bdf-83f8-8492d8b59556 (2)" src="https://github.com/user-attachments/assets/22ca59b7-836e-4461-8faf-6f6995a3f0b1" />
+
