@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Mini HATEOAS Shop</title>
+    <style>
+      body {
+        padding: 20px;
+      }
+      .item {
+        padding: 8px;
+        border: 1px solid #ddd;
+        margin: 6px 0;
+        cursor: pointer;
+        border-radius: 6px;
+      }
+      .back {
+        color: blue;
+        cursor: pointer;
+        margin-top: 10px;
+        display: inline-block;
+      }
+      pre {
+        background: #f6f6f6;
+        padding: 8px;
+        border-radius: 6px;
+      }
+    </style>
+
+    <script>
+      (function () {
+        const products = [
+          { id: 1, name: "T-Shirt", price: 15 },
+          { id: 2, name: "Hoodie", price: 40 },
+          { id: 3, name: "Jeans", price: 55 },
+        ];
+        const real = fetch.bind(window);
+
+        window.fetch = async (input, init) => {
+          const url = typeof input === "string" ? input : input?.url || "";
+          await new Promise((r) => setTimeout(r, 80));
+
+          if (url.endsWith("/api/products")) {
+            return new Response(
+              products
+                .map(
+                  (p) => `
+        <div class="item" data-id="${p.id}">
+          <strong>${p.name}</strong> — $${p.price}
+        </div>`
+                )
+                .join(""),
+              { status: 200, headers: { "Content-Type": "text/html" } }
+            );
+          }
+
+          if (/\/api\/product\/\d+$/.test(url)) {
+            const id = +url.split("/").pop();
+            const p = products.find((x) => x.id === id);
+            return new Response(
+              `
+        <h2>${p.name}</h2>
+        <p>Price: $${p.price}</p>
+        <div class="back" data-back="/api/products">← Back</div>
+        <pre data-hateoas>${JSON.stringify(
+          {
+            self: `/api/product/${p.id}`,
+            add_to_cart: `/api/cart/add/${p.id}`,
+          },
+          null,
+          2
+        )}</pre>
+      `,
+              { status: 200, headers: { "Content-Type": "text/html" } }
+            );
+          }
+
+          return real(input, init);
+        };
+      })();
+    </script>
+  </head>
+
+  <body>
+    <main>
+      <template data-hmpl>
+        <div>
+          <h1>Clothing Shop — HATEOAS</h1>
+
+          <div id="list">
+            {{#request src="/api/products"}} {{#indicator
+            trigger="pending"}}Loading…{{/indicator}} {{/request}}
+          </div>
+
+          <div id="detail"></div>
+
+          <h3>Info:</h3>
+          <pre id="info">none</pre>
+        </div>
+      </template>
+    </main>
+
+    <script src="https://unpkg.com/json5/dist/index.min.js"></script>
+    <script src="https://unpkg.com/dompurify/dist/purify.min.js"></script>
+    <script src="https://unpkg.com/hmpl-js/dist/hmpl.min.js"></script>
+    <script src="https://unpkg.com/hmpl-dom/dist/hmpl-dom.min.js"></script>
+
+    <script>
+      document.addEventListener("click", async (e) => {
+        const item = e.target.closest("[data-id]");
+        if (item) {
+          const id = item.dataset.id;
+          const html = await (await fetch("/api/product/" + id)).text();
+          detail.innerHTML = html;
+          info.textContent =
+            detail.querySelector("[data-hateoas]")?.textContent || "none";
+        }
+
+        const back = e.target.closest("[data-back]");
+        if (back) {
+          const html = await (await fetch(back.dataset.back)).text();
+          list.innerHTML = html;
+          detail.innerHTML = "";
+        }
+      });
+    </script>
+  </body>
+</html>
