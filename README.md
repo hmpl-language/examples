@@ -21,5 +21,14 @@ A landing page where the components are completely located on the server, so the
 
 With the help of a template language, you can even make a game :)
 
-<img width="480" height="321" alt="491296768-a5bb010e-7e11-4bdf-83f8-8492d8b59556 (2)" src="https://github.com/user-attachments/assets/22ca59b7-836e-4461-8faf-6f6995a3f0b1" />
+<img width="480" height="321" alt="game" src="https://github.com/user-attachments/assets/22ca59b7-836e-4461-8faf-6f6995a3f0b1" />
+
+## HATEOAS App
+
+A small application built on the HATEOAS architecture. It uses hmpl-dom. The application itself is a small clothing store.
+
+<img width="1436" height="671" alt="HATEOAS app" src="https://github.com/user-attachments/assets/efd3803d-ca58-4432-b453-01df23a4fb46" />
+
+
+
 
